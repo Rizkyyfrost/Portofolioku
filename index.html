@@ -74,59 +74,65 @@
       </div>
     </div>
   </section>
-
+  
 <!-- Portfolio Section -->
-<section id="portfolio" class="h-screen p-10 bg-black">
-  <h2 class="text-3xl font-bold text-center mb-8">Portfolio</h2>
-  <p class="text-center text-gray-400 max-w-2xl mx-auto mb-12">
-    Berikut adalah beberapa proyek yang telah saya kerjakan.
-  </p>
+<section id="portfolio" class="min-h-screen py-16 px-4 bg-black">
+  <div class="max-w-5xl mx-auto">
+    <h2 class="text-3xl font-bold text-center mb-6 text-white">Portfolio</h2>
+    <p class="text-center text-gray-400 max-w-2xl mx-auto mb-12 text-sm">
+      Berikut adalah beberapa proyek yang telah saya kerjakan.
+    </p>
 
-  <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-    <!-- Project Card 1 -->
-    <div class="border border-yellow-600 rounded-lg overflow-hidden h-72"> <!-- Tinggi kotak diatur -->
-      <img src="project1.png" alt="Project 1" class="w-full h-36 object-cover"> <!-- Gambar diatur lebih kecil -->
-      <div class="p-4">
-        <h3 class="text-xl font-semibold mb-2">Project E-commerce</h3>
-        <p class="text-gray-400 mb-4">
-          Website e-commerce dengan fitur keranjang belanja dan pembayaran online.
-        </p>
-        <a href="#" class="bg-yellow-600 text-black px-4 py-2 rounded hover:bg-yellow-500">
-          Lihat Detail
-        </a>
-      </div>
-    </div>
-
-    <!-- Project Card 2 -->
-    <div class="border border-yellow-600 rounded-lg overflow-hidden h-72"> <!-- Tinggi kotak diatur -->
-      <img src="project2.png" alt="Project 2" class="w-full h-36 object-cover"> <!-- Gambar diatur lebih kecil -->
-      <div class="p-4">
-        <h3 class="text-xl font-semibold mb-2">Landing Page Startup</h3>
-        <p class="text-gray-400 mb-4">
-          Desain responsif untuk landing page perusahaan startup.
-        </p>
-        <a href="#" class="bg-yellow-600 text-black px-4 py-2 rounded hover:bg-yellow-500">
-          Lihat Detail
-        </a>
-      </div>
-    </div>
-
-    <!-- Project Card 3 -->
-    <div class="border border-yellow-600 rounded-lg overflow-hidden h-72"> <!-- Tinggi kotak diatur -->
-      <img src="project3.png" alt="Project 3" class="w-full h-36 object-cover"> <!-- Gambar diatur lebih kecil -->
-      <div class="p-4">
-        <h3 class="text-xl font-semibold mb-2">Dashboard Admin</h3>
-        <p class="text-gray-400 mb-4">
-          Dashboard admin dengan grafik interaktif dan manajemen pengguna.
-        </p>
-        <a href="#" class="bg-yellow-600 text-black px-4 py-2 rounded hover:bg-yellow-500">
-          Lihat Detail
-        </a>
-      </div>
+    <div id="portfolio-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+      <!-- Project cards will be inserted here by JavaScript -->
     </div>
   </div>
 </section>
 
+<script>
+  // Project data
+  const projects = [
+    {
+      title: "Project E-commerce",
+      description: "Website e-commerce dengan fitur keranjang belanja dan pembayaran online.",
+      imageSrc: "project1.png"
+    },
+    {
+      title: "Landing Page Startup",
+      description: "Desain responsif untuk landing page perusahaan startup.",
+      imageSrc: "project2.png"
+    },
+    {
+      title: "Dashboard Admin",
+      description: "Dashboard admin dengan grafik interaktif dan manajemen pengguna.",
+      imageSrc: "project3.png"
+    }
+  ];
+
+  // Function to create a project card
+  function createProjectCard(project) {
+    return `
+      <div class="border border-yellow-600 rounded-lg overflow-hidden shadow-lg bg-gray-900">
+        <img src="${project.imageSrc}" alt="${project.title}" class="w-full h-32 object-cover">
+        <div class="p-4">
+          <h3 class="text-lg font-semibold mb-2 text-white">${project.title}</h3>
+          <p class="text-gray-400 text-sm mb-3 h-16 overflow-hidden">${project.description}</p>
+          <a href="#" class="inline-block bg-yellow-600 text-black px-3 py-1 rounded text-sm hover:bg-yellow-500 transition duration-300">
+            Lihat Detail
+          </a>
+        </div>
+      </div>
+    `;
+  }
+
+  // Insert project cards into the grid
+  document.addEventListener('DOMContentLoaded', function() {
+    const portfolioGrid = document.getElementById('portfolio-grid');
+    projects.forEach(project => {
+      portfolioGrid.innerHTML += createProjectCard(project);
+    });
+  });
+</script>
   <!-- Blog Section -->
   <section id="blog" class="h-screen p-10 bg-black">
     <h2 class="text-2xl font-bold mb-6">Blog</h2>
