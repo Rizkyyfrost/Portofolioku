@@ -26,22 +26,85 @@
     </nav>
   </header>
 <!-- Hero Section -->
-<section id="home" class="h-screen flex flex-col justify-center items-center text-center pt-15">>
+<section id="home" class="h-screen flex flex-col justify-center items-center text-center pt-20">
     <img src="profile.jpg" alt="Avatar" 
-         class="rounded-full border-4 border-yellow-300 mb-6 w-32 h-32 md:w-40 md:h-40">
+         class="rounded-full border-4 border-yellow-300 mb-4 w-32 h-32 md:w-40 md:h-40">
     
     <!-- Nama Berwarna Putih -->
-    <h1 class="text-5xl md:text-6xl font-bold mt-2 text-white">Rizky Maulana</h1>
+    <h1 class="text-5xl md:text-6xl font-bold mt-1 text-white">Rizky Maulana</h1>
     
     <!-- Efek Mengetik -->
-    <p class="text-xl mt-4 text-yellow-400">
-        <span id="dynamic-text"></span>
-        <span class="blinking-cursor">|</span>
+    <p class="text-xl mt-2 text-yellow-400">
+      <span id="dynamic-text"></span>
+      <span class="blinking-cursor">|</span>
     </p>
 
-    <p class="mt-2 text-gray-400">Welcome to My personal website. 👋</p>
+    <!-- Welcome Text with Waving Hand -->
+    <p class="mt-2 text-gray-400">
+      Welcome to My personal website. 
+      <span class="wave">👋</span>
+    </p>
 </section>
 
+<!-- JavaScript -->
+<script>
+    const textElement = document.getElementById('dynamic-text');
+    const texts = ['Full-stack Engineer', 'Web Developer'];
+    let index = 0;
+    let charIndex = 0;
+    let deleting = false;
+
+    function typeEffect() {
+      const currentText = texts[index];
+
+      if (!deleting && charIndex <= currentText.length) {
+        textElement.textContent = currentText.substring(0, charIndex++);
+      } else if (deleting && charIndex >= 0) {
+        textElement.textContent = currentText.substring(0, charIndex--);
+      }
+
+      if (!deleting && charIndex === currentText.length) {
+        setTimeout(() => deleting = true, 1000); // Tunggu sebelum menghapus
+      } else if (deleting && charIndex < 0) {
+        deleting = false;
+        index = (index + 1) % texts.length; // Ganti teks berikutnya
+      }
+
+      setTimeout(typeEffect, deleting ? 100 : 200); // Kecepatan mengetik dan menghapus
+    }
+
+    typeEffect();
+</script>
+
+<!-- CSS untuk Efek Melambai dan Cursor Berkedip -->
+<style>
+    .blinking-cursor {
+        font-weight: bold;
+        font-size: 1.5rem;
+        color: #FFD700; /* Kuning keemasan */
+        animation: blink 1s step-end infinite;
+    }
+
+    @keyframes blink {
+        50% {
+            opacity: 0;
+        }
+    }
+
+    /* Efek Melambai */
+    .wave {
+        display: inline-block;
+        animation: wave-animation 2s infinite;
+        transform-origin: 70% 70%;
+    }
+
+    @keyframes wave-animation {
+        0%, 100% { transform: rotate(0deg); }
+        25% { transform: rotate(20deg); }
+        50% { transform: rotate(-20deg); }
+        75% { transform: rotate(10deg); }
+    }
+</style>
 <!-- JavaScript -->
 <script>
     const textElement = document.getElementById('dynamic-text');
