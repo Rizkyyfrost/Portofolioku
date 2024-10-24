@@ -26,12 +26,14 @@
     </nav>
   </header>
 <!-- Hero Section -->
-<section id="home" class="h-screen flex flex-col justify-center items-center text-center pt-20">
+<section id="home" class="h-screen flex flex-col justify-center items-center text-center pt-20 space-y-6">
+    <!-- Foto dengan Efek Datang dan Ukuran Lebih Besar -->
     <img src="profile.jpg" alt="Avatar" 
-     class="rounded-full border-4 border-yellow-300 mb-4 w-48 h-48 md:w-56 md:h-56">
+     class="rounded-full border-4 border-yellow-300 w-64 h-64 md:w-72 md:h-72 animate-fade-in">
+
     <!-- Nama Berwarna Putih -->
     <h1 class="text-5xl md:text-6xl font-bold mt-1 text-white">Rizky Maulana</h1>
-    
+
     <!-- Efek Mengetik -->
     <p class="text-xl mt-2 text-yellow-400">
       <span id="dynamic-text"></span>
@@ -44,6 +46,45 @@
       <span class="wave">👋</span>
     </p>
 </section>
+
+<!-- Custom CSS -->
+<style>
+@keyframes fade-in {
+    0% {
+        opacity: 0;
+        transform: scale(0.9);
+    }
+    100% {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+@keyframes blink {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0; }
+}
+
+@keyframes wave-animation {
+    0%, 100% { transform: rotate(0deg); }
+    50% { transform: rotate(20deg); }
+}
+
+/* Efek Kedip untuk Kursor */
+.blinking-cursor {
+    animation: blink 1s steps(2, start) infinite;
+}
+
+/* Efek Gelombang */
+.wave {
+    display: inline-block;
+    animation: wave-animation 2s infinite;
+}
+
+.animate-fade-in {
+    animation: fade-in 1.5s ease-in-out;
+}
+</style>
 
 <!-- JavaScript -->
 <script>
