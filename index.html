@@ -302,40 +302,50 @@
   // Project data
   const projects = [
     {
-      title: "Sikataku",
-      description: "Website edukasi anak anak dengan pengolahan kata berdasarkan kurikulum berjenjang .",
-      imageSrc: "project1.png"
+      title: "SIKATAKU",
+      description: "Website edukasi anak anak dengan pengolahan kata berdasarkan kurikulum berjenjang.",
+      imageSrc: "project1.png",
+      technologies: ["Laravel 9", "Tailwind"]
     },
     {
       title: "Landing Page Startup",
       description: "Desain responsif untuk landing page perusahaan startup.",
-      imageSrc: "project2.png"
+      imageSrc: "project2.png",
+      technologies: ["Next.js", "Tailwind"]
     },
     {
       title: "Dashboard Admin",
       description: "Dashboard admin dengan grafik interaktif dan manajemen pengguna.",
-      imageSrc: "project3.png"
+      imageSrc: "project3.png",
+      technologies: ["React", "Bootstrap"]
     }
   ];
 
   // Function to create a project card
   function createProjectCard(project) {
+    const techList = project.technologies.map(
+      tech => `<span class="ml-2 bg-gray-800 text-white px-2 py-1 rounded text-xs">${tech}</span>`
+    ).join('');
+
     return `
       <div class="border border-yellow-600 rounded-lg overflow-hidden shadow-lg bg-gray-900">
         <img src="${project.imageSrc}" alt="${project.title}" class="w-full h-32 object-cover">
         <div class="p-4">
           <h3 class="text-lg font-semibold mb-2 text-white">${project.title}</h3>
           <p class="text-gray-400 text-sm mb-3 h-16 overflow-hidden">${project.description}</p>
-          <a href="#" class="inline-block bg-yellow-600 text-black px-3 py-1 rounded text-sm hover:bg-yellow-500 transition duration-300">
-            Lihat Detail
-          </a>
+          <div class="flex items-center justify-between">
+            <a href="#" class="inline-block bg-yellow-600 text-black px-3 py-1 rounded text-sm hover:bg-yellow-500 transition duration-300">
+              Lihat Detail
+            </a>
+            <div class="flex">${techList}</div>
+          </div>
         </div>
       </div>
     `;
   }
 
   // Insert project cards into the grid
-  document.addEventListener('DOMContentLoaded', function() {
+  document.addEventListener('DOMContentLoaded', function () {
     const portfolioGrid = document.getElementById('portfolio-grid');
     projects.forEach(project => {
       portfolioGrid.innerHTML += createProjectCard(project);
