@@ -58,7 +58,7 @@
         opacity: 1;
         transform: scale(1);
     }
-}
+} 
 
 @keyframes blink {
     0%, 100% { opacity: 1; }
@@ -89,31 +89,31 @@
 <!-- JavaScript -->
 <script>
     const textElement = document.getElementById('dynamic-text');
-    const texts = ['Full-stack Engineer', 'Web Developer'];
-    let index = 0;
-    let charIndex = 0;
-    let deleting = false;
+const texts = ['Junior Full-Stack', 'Senior web dev', 'Tech Enginer'];
+let index = 0;
+let charIndex = 0;
+let deleting = false;
 
-    function typeEffect() {
-      const currentText = texts[index];
+function typeEffect() {
+  const currentText = texts[index];
 
-      if (!deleting && charIndex <= currentText.length) {
-        textElement.textContent = currentText.substring(0, charIndex++);
-      } else if (deleting && charIndex >= 0) {
-        textElement.textContent = currentText.substring(0, charIndex--);
-      }
+  if (!deleting && charIndex <= currentText.length) {
+    textElement.textContent = currentText.substring(0, charIndex++);
+  } else if (deleting && charIndex >= 0) {
+    textElement.textContent = currentText.substring(0, charIndex--);
+  }
 
-      if (!deleting && charIndex === currentText.length) {
-        setTimeout(() => deleting = true, 1000); // Tunggu sebelum menghapus
-      } else if (deleting && charIndex < 0) {
-        deleting = false;
-        index = (index + 1) % texts.length; // Ganti teks berikutnya
-      }
+  if (!deleting && charIndex === currentText.length) {
+    setTimeout(() => deleting = true, 1000); // Tunggu sebelum menghapus
+  } else if (deleting && charIndex < 0) {
+    deleting = false;
+    index = (index + 1) % texts.length; // Ganti teks berikutnya
+  }
 
-      setTimeout(typeEffect, deleting ? 100 : 200); // Kecepatan mengetik dan menghapus
-    }
+  setTimeout(typeEffect, deleting ? 100 : 200); // Kecepatan mengetik dan menghapus
+}
 
-    typeEffect();
+typeEffect();
 </script>
 
 <!-- CSS untuk Efek Melambai dan Cursor Berkedip -->
